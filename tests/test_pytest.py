@@ -14,7 +14,7 @@ class TestFunction:
 
         cls.test_shelf_number = "test_shelf_number"
 
-        #app.documents.append(cls.test_doc)
+        # app.documents.append(cls.test_doc)
 
     def test_add_new_doc(self):
         assert app.add_new_doc(TestFunction.test_doc, TestFunction.test_shelf_number) == TestFunction.test_shelf_number
@@ -26,12 +26,12 @@ class TestFunction:
         assert app.show_document_info(TestFunction.test_doc) == tuple(TestFunction.test_doc.values())
 
     """
-    #протестировано в add_new_doc
+    #протестировано в test_add_new_doc
     def test_add_new_shelf(self): 
         assert app.add_new_shelf(TestFunction.test_shelf_number)
         assert TestFunction.test_shelf_number in app.directories
 
-    #протестировано в add_new_doc
+    #протестировано в test_add_new_doc
     def test_append_doc_to_shelf(self):
         app.append_doc_to_shelf(TestFunction.test_doc["number"], TestFunction.test_shelf_number)
         assert TestFunction.test_doc["number"] in app.directories[TestFunction.test_shelf_number]
@@ -51,7 +51,6 @@ class TestFunction:
         assert TestFunction.test_doc not in app.documents
         assert TestFunction.test_doc["number"] not in app.directories[TestFunction.test_shelf_number]
 
-
     @pytest.mark.parametrize("doc_number, exist", [
         ("11-2", True),
         ("test_number", False)
@@ -59,12 +58,10 @@ class TestFunction:
     def test_check_document_existance(self, doc_number, exist):
         assert app.check_document_existance(doc_number) == exist
 
-
     @classmethod
     def teardown_class(cls):
         app.directories.pop(TestFunction.test_shelf_number, None)
-        #на случай если не сработало штатное удаление документа delete_doc
+        # на случай если не сработало штатное удаление документа delete_doc
         for current_document in app.documents:
             if current_document == TestFunction.test_doc:
                 app.documents.remove(current_document)
-
