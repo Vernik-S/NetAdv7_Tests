@@ -79,6 +79,7 @@ if __name__ == '__main__':
     yandex = YaCreator(token)
     #yandex.upload("files\\test2.txt")
 
+    print(yandex.create_dir(""))
     print(yandex.create_dir("Net_test"))
     print(yandex.get_dir_list())
     print(yandex.del_dir("Net_test"))
